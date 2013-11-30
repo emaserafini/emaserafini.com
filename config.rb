@@ -71,6 +71,8 @@ end
 
 # Deploy setup with git
 activate :deploy do |deploy|
+  deploy.build_before = true # default: false
+  
   deploy.method = :git
   # Optional Settings
   # deploy.remote = "custom-remote" # remote name or git url, default: origin
