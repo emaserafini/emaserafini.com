@@ -71,7 +71,7 @@ end
 
 # Deploy setup with git
 activate :deploy do |deploy|
-  deploy.build_before = true # default: false
+  deploy.build_before = false # default: false
   
   deploy.method = :git
   # Optional Settings
