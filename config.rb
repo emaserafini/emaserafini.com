@@ -36,7 +36,7 @@
 # activate :automatic_image_sizes
 
 # Reload the browser automatically whenever files change
-# activate :livereload
+activate :livereload
 
 # Methods defined in the helpers block are available in templates
 # helpers do
@@ -67,4 +67,12 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+end
+
+# Deploy setup with git
+activate :deploy do |deploy|
+  deploy.method = :git
+  # Optional Settings
+  # deploy.remote = "custom-remote" # remote name or git url, default: origin
+  # deploy.branch = "custom-branch" # default: gh-pages
 end
