@@ -5,11 +5,15 @@
   <% end %>
 <% end %>
 
-<% blog.articles[0...10].each do |article| %>
+<% blog.articles[0...10].each_with_index do |article, index| %>
+  <div class="article<%= ' latest' if index == 0 %>">
     <h1><%= link_to article.title, article %></h1>
-    <time><%= article.date.strftime('%b %e %Y') %></time>
-    <%= article.summary %>
-    <%= link_to "read on &raquo;", article, class: 'more' %>
+    <time><%= article.date.strftime('%b %e, %Y') %></time>
+    <% if index == 0 %>
+      <%= article.summary %>
+      <%= link_to "read on &raquo;", article, class: 'more' %>
+    <% end %>
+  </div>
 <% end %>
 
 <% if paginate %>

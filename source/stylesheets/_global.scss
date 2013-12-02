@@ -39,48 +39,49 @@ h1, h2, h3, h4, h5, h6 { font-family: $headingFontFamily; font-weight: 700; }
 //  }
 //}
 //
-//pre {
+pre {
 //  @include adjust-font-size-to(14px);
-//  background-color: $codeBackground;
-//  color: $gray;
-//  font-family: $codeFontFamily;
-//  white-space: pre;
-//  word-wrap: normal;
-//  overflow: scroll;
-//  padding: 1em 2em;
+  background-color: $codeBackground;
+  color: $gray;
+  font-family: $codeFontFamily;
+  white-space: pre;
+  word-wrap: normal;
+  overflow: scroll;
+  padding: 1em 2em;
 //  margin: 0 -2em;
-//
-//  //@include breakpoint($tablet-portrait) {
-//    margin: 0;
+//  margin: 0;
+
+  //@include breakpoint($tablet-portrait) {
+   // margin: 0;
 //  }
+
+  code {
+    background-color: transparent;
+  }
+}
 //
-//  code {
-//    background-color: transparent;
-//  }
-//}
+a {
+  color: $mainColour;
+  text-decoration: none;
+}
 //
-//a {
-//  color: $mainColour;
-//  text-decoration: none;
-//}
-//
-//p, li {
-//  code {
+p, li {
+  code {
 //    @include adjust-font-size-to(14px);
-//    color: $gray;
-//    padding: 0 0.3em;
-//    background-color: #fef9ec;
-//    border: solid 1px darken(#fef9ec, 5%);
-//  }
+    color: $gray;
+    padding: 0 0.3em;
+    background-color: #fef9ec;
+    border: solid 1px darken(#fef9ec, 5%);
+  }
 //
-//  a {
+  a {
 //    @include transition(background-color 200ms ease);
-//
-//    &:hover {
-//      background-color: lighten($mainColour, 10%);
-//    }
-//  }
-//}
+
+    &:hover {
+      background-color: lighten($mainColour, 25%);
+    }
+  }
+}
 //
 //img {
 //  max-width: 100%;

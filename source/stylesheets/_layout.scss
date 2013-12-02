@@ -10,37 +10,21 @@ body {
   }
 }
 
-//.list {
-//  article {
-//    padding: 1em 2em;
-//
-//    h1 {
-//      @include adjust-font-size-to(18px);
-//      @include adjust-leading-to(1);
-//
-//      //@include breakpoint($tablet-portrait) {
-//        @include adjust-font-size-to(24px);
-//        @include adjust-leading-to(1);
-//      }
-//    }
-//
-//    time {
-//      @include adjust-font-size-to(12px);
-//      color: $grayLight;
-//    }
-//
-//    &.latest {
-//      border-bottom: solid 1px $grayLighter;
-//      padding: 2em;
-//
-//      h1 {
-//        @include adjust-font-size-to(24px);
-//        @include adjust-leading-to(1);
-//
-//        //@include breakpoint($tablet-portrait) {
-//          @include adjust-font-size-to(36px);
-//        }
-//      }
-//    }
-//  }
-//}
+.article {
+  padding: 1em;
+  border-bottom: solid 1px $grayLighter;
+  
+  h1 {
+    font-size: $medium-font-size;
+  }
+
+  time {
+    color: $grayLight;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  &.latest {
+    padding: 1em;
+  }
+}
+
