@@ -1,0 +1,98 @@
+//@include establish-baseline;
+
+//*, *:before, *:after {
+//  @include box-sizing('border-box');
+//}
+html, body {
+  font-family: $bodyFontFamily;
+  background-color: $bodyBackground;
+  color: $textColour;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: $headingFontFamily; font-weight: 700; }
+//h1 { @include adjust-font-size-to(36px); }
+//h2 { @include adjust-font-size-to(24px); }
+//h3 { @include adjust-font-size-to(18px); }
+//h4 { @include adjust-font-size-to(14px); }
+//h5 { @include adjust-font-size-to(12px); }
+//h6 { @include adjust-font-size-to(12px); font-weight: 400; }
+
+//blockquote {
+//  padding: 0 0 0 15px;
+//  margin: 0 0 0 $base-line-height;
+//  border-left: solid 5px $grayLighter;
+//  color: $gray;
+//  font-style: italic;
+//
+//  p {
+//    margin-bottom: 0;
+//    line-height: 1.8em;
+//  }
+//  small {
+//    display: block;
+//    line-height: $base-line-height;
+//    color: $grayLight;
+//
+//    &:before {
+//      content: "\2014 \00A0";
+//    }
+//  }
+//}
+//
+//pre {
+//  @include adjust-font-size-to(14px);
+//  background-color: $codeBackground;
+//  color: $gray;
+//  font-family: $codeFontFamily;
+//  white-space: pre;
+//  word-wrap: normal;
+//  overflow: scroll;
+//  padding: 1em 2em;
+//  margin: 0 -2em;
+//
+//  //@include breakpoint($tablet-portrait) {
+//    margin: 0;
+//  }
+//
+//  code {
+//    background-color: transparent;
+//  }
+//}
+//
+//a {
+//  color: $mainColour;
+//  text-decoration: none;
+//}
+//
+//p, li {
+//  code {
+//    @include adjust-font-size-to(14px);
+//    color: $gray;
+//    padding: 0 0.3em;
+//    background-color: #fef9ec;
+//    border: solid 1px darken(#fef9ec, 5%);
+//  }
+//
+//  a {
+//    @include transition(background-color 200ms ease);
+//
+//    &:hover {
+//      background-color: lighten($mainColour, 10%);
+//    }
+//  }
+//}
+//
+//img {
+//  max-width: 100%;
+//}
+//
+//.img-centered {
+//  text-align: center;
+//}
+//
+//.alert {
+//  background-color: #d9edf7;
+//  border: solid 1px #bce8f1;
+//  color: #3a87ad;
+//  padding: 1em;
+//}
