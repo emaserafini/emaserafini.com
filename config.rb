@@ -38,6 +38,8 @@
 # Reload the browser automatically whenever files change
 activate :livereload
 
+activate :directory_indexes
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
@@ -88,19 +90,21 @@ end
 # Time.zone = "UTC"
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
-  # blog.prefix = "blog"
+  blog.prefix = "articles"
 
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
+  blog.permalink = "{year}-{month}-{day}-{title}.html"
+  # blog.permalink = "posts/:title.html"
   # Matcher for blog source files
-  # blog.sources = "{year}-{month}-{day}-{title}.html"
+  blog.sources = "{year}-{month}-{day}-{title}.html"
   # blog.taglink = "tags/{tag}.html"
   # blog.layout = "layout"
   # blog.summary_separator = /(READMORE)/
-  # blog.summary_length = 250
+  blog.summary_length = 400
   # blog.year_link = "{year}.html"
   # blog.month_link = "{year}/{month}.html"
   # blog.day_link = "{year}/{month}/{day}.html"
-  blog.default_extension = ".md"
+  # blog.default_extension = ".markdown"
 
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
