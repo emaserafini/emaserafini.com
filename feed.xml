@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog Name</title>
+  <subtitle>Blog subtitle</subtitle>
+  <id>http://blog.url.com/articles</id>
+  <link href="http://blog.url.com/articles"/>
+  <link href="http://blog.url.com/feed.xml" rel="self"/>
+  <updated>2013-12-02T00:00:00Z</updated>
+  <author>
+    <name>Blog Author</name>
+  </author>
+  <entry>
+    <title>From bootstrap(3) to production</title>
+    <link rel="alternate" href="http://blog.url.com/articles/from_bootstrap_to_production.html"/>
+    <id>http://blog.url.com/articles/from_bootstrap_to_production.html</id>
+    <published>2013-12-02T00:00:00Z</published>
+    <updated>2013-12-03T09:24:33+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Twitter Bootstrap is based on Less.js, the popular dynamic CSS scripting language. In your Rails project you may prefer to use Sass instead of Less, because it’s already supported by Rails out of the box, or because your application already contains a large amount of Sass code, or possibly just because you’re more familiar with it. At first glance, this seems to be a serious problem for Twitter Bootstrap: it’s not appropriate for a large portion of the Rails community that prefers Sass, since it was implemented with the Javascript-centric Less.js technology.&lt;/p&gt;
+
+&lt;h3 id="stylesheets"&gt;Stylesheets&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/jlong/sass-bootstrap"&gt;Sass-twitter-bootstrap&lt;/a&gt; is not a gem, but instead is just a github repo containing Twitter’s translated code. To use it in your Rails app, just clone the repo and copy Sass source files right into your application like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/jlong/sass-twitter-bootstrap.git
+
+$ cp -r sass-twitter-bootstrap/lib path/to/app/assets/stylesheets/twitter
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And now since the Rails asset pipeline supports Sass out of the box, we’re good to go… almost! If you run your app now, you’ll see an error:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ActionView::Template::Error (Undefined variable: "$baseline".
+  	(in /path/to/app/assets/stylesheets/twitter/forms.scss))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To fix this, there’s a simple solution remove line &lt;code&gt;*= require_tree .&lt;/code&gt; from &lt;code&gt;application.css&lt;/code&gt;. The problem is caused because the translated Sass version was designed to be included once using the bootstrap.scss file, which in turns includes all of the other files.&lt;/p&gt;
+
+&lt;h3 id="javascripts"&gt;Javascripts&lt;/h3&gt;
+
+&lt;h3 id="font"&gt;Font&lt;/h3&gt;
+
+&lt;h3 id="production-setup"&gt;Production setup&lt;/h3&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Devise, how to</title>
+    <link rel="alternate" href="http://blog.url.com/articles/devise.html"/>
+    <id>http://blog.url.com/articles/devise.html</id>
+    <published>2013-11-14T00:00:00Z</published>
+    <updated>2013-12-03T09:24:46+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;This README is &lt;a href="http://devise.plataformatec.com.br/"&gt;also available in a friendly navigable format&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Devise is a flexible authentication solution for Rails based on Warden. It:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Is Rack based;&lt;/li&gt;
+  &lt;li&gt;Is a complete MVC solution based on Rails engines;&lt;/li&gt;
+  &lt;li&gt;Allows you to have multiple models signed in at the same time;&lt;/li&gt;
+  &lt;li&gt;Is based on a modularity concept: use just what you really need.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It's composed of 10 modules:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/DatabaseAuthenticatable"&gt;Database Authenticatable&lt;/a&gt;: encrypts and stores a password in the database to validate the authenticity of a user while signing in. The authentication can be done both through POST requests or HTTP Basic Authentication.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Omniauthable"&gt;Omniauthable&lt;/a&gt;: adds Omniauth (https://github.com/intridea/omniauth) support;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Confirmable"&gt;Confirmable&lt;/a&gt;: sends emails with confirmation instructions and verifies whether an account is already confirmed during sign in.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Recoverable"&gt;Recoverable&lt;/a&gt;: resets the user password and sends reset instructions.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Registerable"&gt;Registerable&lt;/a&gt;: handles signing up users through a registration process, also allowing them to edit and destroy their account.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Rememberable"&gt;Rememberable&lt;/a&gt;: manages generating and clearing a token for remembering the user from a saved cookie.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Trackable"&gt;Trackable&lt;/a&gt;: tracks sign in count, timestamps and IP address.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Timeoutable"&gt;Timeoutable&lt;/a&gt;: expires sessions that have no activity in a specified period of time.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Validatable"&gt;Validatable&lt;/a&gt;: provides validations of email and password. It's optional and can be customized, so you're able to define your own validations.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Lockable"&gt;Lockable&lt;/a&gt;: locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Devise is guaranteed to be thread-safe on YARV. Thread-safety support on JRuby is on progress.&lt;/p&gt;
+
+&lt;h2 id="information"&gt;Information&lt;/h2&gt;
+
+&lt;h3 id="the-devise-wiki"&gt;The Devise wiki&lt;/h3&gt;
+
+&lt;p&gt;The Devise Wiki has lots of additional information about Devise including many "how-to" articles and answers to the most frequently asked questions. Please browse the Wiki after finishing this README:&lt;/p&gt;
+
+&lt;p&gt;https://github.com/plataformatec/devise/wiki&lt;/p&gt;
+
+&lt;h3 id="bug-reports"&gt;Bug reports&lt;/h3&gt;
+
+&lt;p&gt;If you discover a problem with Devise, we would like to know about it. However, we ask that you please review these guidelines before submitting a bug report:&lt;/p&gt;
+
+&lt;p&gt;https://github.com/plataformatec/devise/wiki/Bug-reports&lt;/p&gt;
+
+&lt;p&gt;If you found a security bug, do &lt;em&gt;NOT&lt;/em&gt; use the GitHub issue tracker. Send an email to the maintainers listed at the bottom of the README.&lt;/p&gt;
+
+&lt;h3 id="mailing-list"&gt;Mailing list&lt;/h3&gt;
+
+&lt;p&gt;If you have any questions, comments, or concerns, please use the Google Group instead of the GitHub issue tracker:&lt;/p&gt;
+
+&lt;p&gt;https://groups.google.com/group/plataformatec-devise&lt;/p&gt;
+
+&lt;h3 id="rdocs"&gt;RDocs&lt;/h3&gt;
+
+&lt;p&gt;You can view the Devise documentation in RDoc format here:&lt;/p&gt;
+
+&lt;p&gt;http://rubydoc.info/github/plataformatec/devise/master/frames&lt;/p&gt;
+
+&lt;p&gt;If you need to use Devise with previous versions of Rails, you can always run "gem server" from the command line after you install the gem to access the old documentation.&lt;/p&gt;
+
+&lt;h3 id="example-applications"&gt;Example applications&lt;/h3&gt;
+
+&lt;p&gt;There are a few example applications available on GitHub that demonstrate various features of Devise with different versions of Rails. You can view them here:&lt;/p&gt;
+
+&lt;p&gt;https://github.com/plataformatec/devise/wiki/Example-Applications&lt;/p&gt;
+
+&lt;h3 id="extensions"&gt;Extensions&lt;/h3&gt;
+
+&lt;p&gt;Our community has created a number of extensions that add functionality above and beyond what is included with Devise. You can view a list of available extensions and add your own here:&lt;/p&gt;
+
+&lt;p&gt;https://github.com/plataformatec/devise/wiki/Extensions&lt;/p&gt;
+
+&lt;h3 id="contributing"&gt;Contributing&lt;/h3&gt;
+
+&lt;p&gt;We hope that you will consider contributing to Devise. Please read this short overview for some information about how to get started:&lt;/p&gt;
+
+&lt;p&gt;https://github.com/plataformatec/devise/wiki/Contributing&lt;/p&gt;
+
+&lt;p&gt;You will usually want to write tests for your changes.  To run the test suite, go into Devise's top-level directory and run "bundle install" and "rake".  For the tests to pass, you will need to have a MongoDB server (version 2.0 or newer) running on your system.&lt;/p&gt;
+
+&lt;h2 id="starting-with-rails"&gt;Starting with Rails?&lt;/h2&gt;
+
+&lt;p&gt;If you are building your first Rails application, we recommend you to &lt;em&gt;not&lt;/em&gt; use Devise. Devise requires a good understanding of the Rails Framework. In such cases, we advise you to start a simple authentication system from scratch, today we have two resources:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Michael Hartl's online book: http://railstutorial.org/chapters/modeling-and-viewing-users-two#top&lt;/li&gt;
+  &lt;li&gt;Ryan Bates' Railscast: http://railscasts.com/episodes/250-authentication-from-scratch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once you have solidified your understanding of Rails and authentication mechanisms, we assure you Devise will be very pleasant to work with. :)&lt;/p&gt;
+
+&lt;h2 id="getting-started"&gt;Getting started&lt;/h2&gt;
+
+&lt;p&gt;Devise 3.0 works with Rails 3.2 onwards. You can add it to your Gemfile with:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+gem 'devise'
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Run the bundle command to install it.&lt;/p&gt;
+
+&lt;p&gt;After you install Devise and add it to your Gemfile, you need to run the generator:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;console
+rails generate devise:install
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The generator will install an initializer which describes ALL Devise's configuration options and you MUST take a look at it. When you are done, you are ready to add Devise to any of your models using the generator:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;console
+rails generate devise MODEL
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Replace MODEL by the class name used for the applications users, it's frequently &lt;code&gt;User&lt;/code&gt; but could also be &lt;code&gt;Admin&lt;/code&gt;. This will create a model (if one does not exist) and configure it with default Devise modules. Next, you'll usually run &lt;code&gt;rake db:migrate&lt;/code&gt; as the generator will have created a migration file (if your ORM supports them). This generator also configures your config/routes.rb file to point to the Devise controller.&lt;/p&gt;
+
+&lt;p&gt;Note that you should re-start your app here if you've already started it. Otherwise you'll run into strange errors like users being unable to login and the route helpers being undefined.&lt;/p&gt;
+
+&lt;h3 id="controller-filters-and-helpers"&gt;Controller filters and helpers&lt;/h3&gt;
+
+&lt;p&gt;Devise will create some helpers to use inside your controllers and views. To set up a controller with user authentication, just add this before_filter:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+before_filter :authenticate_user!
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To verify if a user is signed in, use the following helper:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+user_signed_in?
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For the current signed-in user, this helper is available:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+current_user
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You can access the session for this scope:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+user_session
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;After signing in a user, confirming the account or updating the password, Devise will look for a scoped root path to redirect. Example: For a :user resource, it will use &lt;code&gt;user_root_path&lt;/code&gt; if it exists, otherwise default &lt;code&gt;root_path&lt;/code&gt; will be used. This means that you need to set the root inside your routes:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+root to: "home#index"
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You can also overwrite &lt;code&gt;after_sign_in_path_for&lt;/code&gt; and &lt;code&gt;after_sign_out_path_for&lt;/code&gt; to customize your redirect hooks.&lt;/p&gt;
+
+&lt;p&gt;Finally, you need to set up default url options for the mailer in each environment. Here is the configuration for "config/environments/development.rb":&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+config.action_mailer.default_url_options = { :host =&amp;gt; 'localhost:3000' }
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice that if your devise model is not called "user" but "member", then the helpers you should use are:&lt;/p&gt;
+
+&lt;p&gt;```ruby
+before_filter :authenticate_member!&lt;/p&gt;
+
+&lt;p&gt;member_signed_in?&lt;/p&gt;
+
+&lt;p&gt;current_member&lt;/p&gt;
+
+&lt;p&gt;member_session
+```&lt;/p&gt;
+
+&lt;h3 id="configuring-models"&gt;Configuring Models&lt;/h3&gt;
+
+&lt;p&gt;The devise method in your models also accepts some options to configure its modules. For example, you can choose the cost of the encryption algorithm with:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+devise :database_authenticatable, :registerable, :confirmable, :recoverable, :stretches =&amp;gt; 20
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Besides :stretches, you can define :pepper, :encryptor, :confirm_within, :remember_for, :timeout_in, :unlock_in and other values. For details, see the initializer file that was created when you invoked the "devise:install" generator described above.&lt;/p&gt;
+
+&lt;h3 id="strong-parameters"&gt;Strong Parameters&lt;/h3&gt;
+
+&lt;p&gt;When you customize your own views, you may end up adding new attributes to forms. Rails 4 moved the parameter sanitization from the model to the controller, causing Devise to handle this concern at the controller as well.&lt;/p&gt;
+
+&lt;p&gt;There are just three actions in Devise that allows any set of parameters to be passed down to the model, therefore requiring sanitization. Their names and the permitted parameters by default are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;sign_in&lt;/code&gt; (&lt;code&gt;Devise::SessionsController#new&lt;/code&gt;) - Permits only the authentication keys (like &lt;code&gt;email&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;sign_up&lt;/code&gt; (&lt;code&gt;Devise::RegistrationsController#create&lt;/code&gt;) - Permits authentication keys plus &lt;code&gt;password&lt;/code&gt; and &lt;code&gt;password_confirmation&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;account_update&lt;/code&gt; (&lt;code&gt;Devise::RegistrationsController#update&lt;/code&gt;) - Permits authentication keys plus &lt;code&gt;password&lt;/code&gt;, &lt;code&gt;password_confirmation&lt;/code&gt; and &lt;code&gt;current_password&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In case you want to permit additional parameters (the lazy way™) you can do with a simple before filter in your &lt;code&gt;ApplicationController&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;```ruby
+class ApplicationController &amp;lt; ActionController::Base
+  before_filter :configure_permitted_parameters, if: :devise_controller?&lt;/p&gt;
+
+&lt;p&gt;protected&lt;/p&gt;
+
+&lt;p&gt;def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) « :username
+  end
+end
+```&lt;/p&gt;
+
+&lt;p&gt;To completely change Devise defaults or invoke custom behaviour, you can also pass a block:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+def configure_permitted_parameters
+  devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email) }
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you have multiple Devise models, you may want to set up different parameter sanitizer per model. In this case, we recommend inheriting from &lt;code&gt;Devise::ParameterSanitizer&lt;/code&gt; and add your own logic:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+class User::ParameterSanitizer &amp;lt; Devise::ParameterSanitizer
+  def sign_in
+    default_params.permit(:username, :email)
+  end
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And then configure your controllers to use it:&lt;/p&gt;
+
+&lt;p&gt;```ruby
+class ApplicationController &amp;lt; ActionController::Base
+  protected&lt;/p&gt;
+
+&lt;p&gt;def devise_parameter_sanitizer
+    if resource_class == User
+      User::ParameterSanitizer.new(User, :user, params)
+    else
+      super # Use the default one
+    end
+  end
+end
+```&lt;/p&gt;
+
+&lt;p&gt;The example above overrides the permitted parameters for the user to be both &lt;code&gt;:username&lt;/code&gt; and &lt;code&gt;:email&lt;/code&gt;. The non-lazy way to configure parameters would be by defining the before filter above in a custom controller. We detail how to configure and customize controllers in some sections below.&lt;/p&gt;
+
+&lt;h3 id="configuring-views"&gt;Configuring views&lt;/h3&gt;
+
+&lt;p&gt;We built Devise to help you quickly develop an application that uses authentication. However, we don't want to be in your way when you need to customize it.&lt;/p&gt;
+
+&lt;p&gt;Since Devise is an engine, all its views are packaged inside the gem. These views will help you get started, but after some time you may want to change them. If this is the case, you just need to invoke the following generator, and it will copy all views to your application:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;console
+rails generate devise:views
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you have more than one Devise model in your application (such as "User" and "Admin"), you will notice that Devise uses the same views for all models. Fortunately, Devise offers an easy way to customize views. All you need to do is set "config.scoped_views = true" inside "config/initializers/devise.rb".&lt;/p&gt;
+
+&lt;p&gt;After doing so, you will be able to have views based on the role like "users/sessions/new" and "admins/sessions/new". If no view is found within the scope, Devise will use the default view at "devise/sessions/new". You can also use the generator to generate scoped views:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;console
+rails generate devise:views users
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id="configuring-controllers"&gt;Configuring controllers&lt;/h3&gt;
+
+&lt;p&gt;If the customization at the views level is not enough, you can customize each controller by following these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create your custom controller, for example a &lt;code&gt;Admins::SessionsController&lt;/code&gt;:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;ruby
+ class Admins::SessionsController &amp;lt; Devise::SessionsController
+ end
+&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;Note that in the above example, the controller needs to be created in the &lt;code&gt;app/controller/admins/&lt;/code&gt; directory.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tell the router to use this controller:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;ruby
+ devise_for :admins, :controllers =&amp;gt; { :sessions =&amp;gt; "admins/sessions" }
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;And since we changed the controller, it won't use the &lt;code&gt;"devise/sessions"&lt;/code&gt; views, so remember to copy &lt;code&gt;"devise/sessions"&lt;/code&gt; to &lt;code&gt;"admin/sessions"&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;p&gt;Remember that Devise uses flash messages to let users know if sign in was successful or failed. Devise expects your application to call &lt;code&gt;"flash[:notice]"&lt;/code&gt; and &lt;code&gt;"flash[:alert]"&lt;/code&gt; as appropriate. Do not print the entire flash hash, print specific keys or at least remove the &lt;code&gt;:timedout&lt;/code&gt; key from the hash as Devise adds this key in some circumstances, this key is not meant for display.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id="configuring-routes"&gt;Configuring routes&lt;/h3&gt;
+
+&lt;p&gt;Devise also ships with default routes. If you need to customize them, you should probably be able to do it through the devise_for method. It accepts several options like :class_name, :path_prefix and so on, including the possibility to change path names for I18n:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+devise_for :users, :path =&amp;gt; "auth", :path_names =&amp;gt; { :sign_in =&amp;gt; 'login', :sign_out =&amp;gt; 'logout', :password =&amp;gt; 'secret', :confirmation =&amp;gt; 'verification', :unlock =&amp;gt; 'unblock', :registration =&amp;gt; 'register', :sign_up =&amp;gt; 'cmon_let_me_in' }
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Be sure to check &lt;code&gt;devise_for&lt;/code&gt; documentation for details.&lt;/p&gt;
+
+&lt;p&gt;If you have the need for more deep customization, for instance to also allow "/sign_in" besides "/users/sign_in", all you need to do is to create your routes normally and wrap them in a &lt;code&gt;devise_scope&lt;/code&gt; block in the router:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+devise_scope :user do
+  get "sign_in", :to =&amp;gt; "devise/sessions#new"
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This way you tell devise to use the scope :user when "/sign_in" is accessed. Notice &lt;code&gt;devise_scope&lt;/code&gt; is also aliased as &lt;code&gt;as&lt;/code&gt; in your router.&lt;/p&gt;
+
+&lt;h3 id="i18n"&gt;I18n&lt;/h3&gt;
+
+&lt;p&gt;Devise uses flash messages with I18n with the flash keys :notice and :alert. To customize your app, you can set up your locale file:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;yaml
+en:
+  devise:
+    sessions:
+      signed_in: 'Signed in successfully.'
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You can also create distinct messages based on the resource you've configured using the singular name given in routes:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;yaml
+en:
+  devise:
+    sessions:
+      user:
+        signed_in: 'Welcome user, you are signed in.'
+      admin:
+        signed_in: 'Hello admin!'
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The Devise mailer uses a similar pattern to create subject messages:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;yaml
+en:
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: 'Hello everybody!'
+        user_subject: 'Hello User! Please confirm your email'
+      reset_password_instructions:
+        subject: 'Reset instructions'
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Take a look at our locale file to check all available messages. You may also be interested in one of the many translations that are available on our wiki:&lt;/p&gt;
+
+&lt;p&gt;https://github.com/plataformatec/devise/wiki/I18n&lt;/p&gt;
+
+&lt;h3 id="test-helpers"&gt;Test helpers&lt;/h3&gt;
+
+&lt;p&gt;Devise includes some tests helpers for functional specs. In order to use them, you need to include Devise in your functional tests by adding the following to the bottom of your &lt;code&gt;test/test_helper.rb&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you're using RSpec, you can put the following inside a file named &lt;code&gt;spec/support/devise.rb&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+RSpec.configure do |config|
+  config.include Devise::TestHelpers, :type =&amp;gt; :controller
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you are ready to use the &lt;code&gt;sign_in&lt;/code&gt; and &lt;code&gt;sign_out&lt;/code&gt; methods. Such methods have the same signature as in controllers:&lt;/p&gt;
+
+&lt;p&gt;```ruby
+sign_in :user, @user   # sign_in(scope, resource)
+sign_in @user          # sign_in(resource)&lt;/p&gt;
+
+&lt;p&gt;sign_out :user         # sign_out(scope)
+sign_out @user         # sign_out(resource)
+```&lt;/p&gt;
+
+&lt;p&gt;There are two things that is important to keep in mind:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;These helpers are not going to work for integration tests driven by Capybara or Webrat. They are meant to be used with functional tests only. Instead, fill in the form or explicitly set the user in session;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you are testing Devise internal controllers or a controller that inherits from Devise's, you need to tell Devise which mapping should be used before a request. This is necessary because Devise gets this information from router, but since functional tests do not pass through the router, it needs to be told explicitly. For example, if you are testing the user scope, simply do:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;ruby
+ @request.env["devise.mapping"] = Devise.mappings[:user]
+ get :new
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id="omniauth"&gt;Omniauth&lt;/h3&gt;
+
+&lt;p&gt;Devise comes with Omniauth support out of the box to authenticate with other providers. To use it, just specify your omniauth configuration in &lt;code&gt;config/initializers/devise.rb&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope =&amp;gt; 'user,public_repo'
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You can read more about Omniauth support in the wiki:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="configuring-multiple-models"&gt;Configuring multiple models&lt;/h3&gt;
+
+&lt;p&gt;Devise allows you to set up as many Devise models as you want. If you want to have an Admin model with just authentication and timeout features, in addition to the User model above, just run:&lt;/p&gt;
+
+&lt;p&gt;```ruby
+# Create a migration with the required fields
+create_table :admins do |t|
+  t.string :email
+  t.string :encrypted_password
+  t.timestamps
+end&lt;/p&gt;
+
+&lt;h1 id="inside-your-admin-model"&gt;Inside your Admin model&lt;/h1&gt;
+&lt;p&gt;devise :database_authenticatable, :timeoutable&lt;/p&gt;
+
+&lt;h1 id="inside-your-routes"&gt;Inside your routes&lt;/h1&gt;
+&lt;p&gt;devise_for :admins&lt;/p&gt;
+
+&lt;h1 id="inside-your-protected-controller"&gt;Inside your protected controller&lt;/h1&gt;
+&lt;p&gt;before_filter :authenticate_admin!&lt;/p&gt;
+
+&lt;h1 id="inside-your-controllers-and-views"&gt;Inside your controllers and views&lt;/h1&gt;
+&lt;p&gt;admin_signed_in?
+current_admin
+admin_session
+```&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you can simply run the Devise generator.&lt;/p&gt;
+
+&lt;p&gt;Keep in mind that those models will have completely different routes. They &lt;strong&gt;do not&lt;/strong&gt; and &lt;strong&gt;cannot&lt;/strong&gt; share the same controller for sign in, sign out and so on. In case you want to have different roles sharing the same actions, we recommend you to use a role-based approach, by either providing a role column or using &lt;a href="https://github.com/ryanb/cancan"&gt;CanCan&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id="other-orms"&gt;Other ORMs&lt;/h3&gt;
+
+&lt;p&gt;Devise supports ActiveRecord (default) and Mongoid. To choose other ORM, you just need to require it in the initializer file.&lt;/p&gt;
+
+&lt;h2 id="additional-information"&gt;Additional information&lt;/h2&gt;
+
+&lt;h3 id="heroku"&gt;Heroku&lt;/h3&gt;
+
+&lt;p&gt;Using devise on Heroku with Ruby on Rails 3.1 requires setting:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+config.assets.initialize_on_precompile = false
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Read more about the potential issues at http://guides.rubyonrails.org/asset_pipeline.html&lt;/p&gt;
+
+&lt;h3 id="warden"&gt;Warden&lt;/h3&gt;
+
+&lt;p&gt;Devise is based on Warden, which is a general Rack authentication framework created by Daniel Neighman. We encourage you to read more about Warden here:&lt;/p&gt;
+
+&lt;p&gt;https://github.com/hassox/warden&lt;/p&gt;
+
+&lt;h3 id="contributors"&gt;Contributors&lt;/h3&gt;
+
+&lt;p&gt;We have a long list of valued contributors. Check them all at:&lt;/p&gt;
+
+&lt;p&gt;https://github.com/plataformatec/devise/graphs/contributors&lt;/p&gt;
+
+&lt;h2 id="license"&gt;License&lt;/h2&gt;
+
+&lt;p&gt;MIT License. Copyright 2009-2013 Plataformatec. http://plataformatec.com.br&lt;/p&gt;
+
+&lt;p&gt;You are not granted rights or licenses to the trademarks of the Plataformatec, including without limitation the Devise name or logo.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Simple way to find broken links with Wget</title>
+    <link rel="alternate" href="http://blog.url.com/articles/simple-way-to-find-broken-links-with-wget.html"/>
+    <id>http://blog.url.com/articles/simple-way-to-find-broken-links-with-wget.html</id>
+    <published>2013-09-11T00:00:00Z</published>
+    <updated>2013-12-03T09:24:46+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;After writing the previous post singing the praises of Wget by show it can be used to &lt;a href="/articles/make-a-local-website-mirror-with-wget/"&gt;mirror and entire website locally&lt;/a&gt;. I have stumbled across another useful feature, it can be used to &lt;a href="http://en.wikipedia.org/wiki/Web_crawler"&gt;spider a website&lt;/a&gt; following every link it finds (including those of assets such as stylesheets etc) and log the results.&lt;/p&gt;
+
+&lt;p&gt;In short, it's a pretty effective broken link finder, brilliant news for anyone with a long standing blog for example as most CMS systems such as &lt;a href="http://wordpress.org/"&gt;Wordpress&lt;/a&gt; will not update any article references you have put in your blog posts for you.&lt;/p&gt;
+
+&lt;h2 id="shut-up-and-show-me-this-thing"&gt;Shut up and show me this thing!&lt;/h2&gt;
+
+&lt;p&gt;First, you'll need to make sure you have &lt;a href="http://www.gnu.org/software/wget/"&gt;Wget&lt;/a&gt;, on OS X you can just use &lt;a href="http://brew.sh/"&gt;Homebrew&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+brew install wget
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The command to give Wget is as follows, note this will output the resulting file to your home directory &lt;code&gt;~/&lt;/code&gt;. It may take a little while depending on the size of your website.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+wget --spider -o ~/wget.log -e robots=off -w 1 -r -p http://www.example.com
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let's break this command down so you can see what Wget is being told to do:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;--spider&lt;/code&gt;, this tells Wget not to download anything since we only want a report so it will only do a HEAD request not a GET.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-o ~/wget.log&lt;/code&gt;, log messages to the declared file, in this case a file called &lt;code&gt;wget.log&lt;/code&gt; that will be saved to your home directory, you can change this to a more convenient location and filename.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-e robots=off&lt;/code&gt;, this one tells wget to ignore the &lt;code&gt;robots.txt&lt;/code&gt; file. &lt;a href="http://www.robotstxt.org/"&gt;Learn more about robots.txt&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-w 1&lt;/code&gt;, adds a 1 second wait between requests, this slows down Wget to more consistent rate to minimise stress on the hosting server so you don't get back any false positives.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-r&lt;/code&gt;, this means recursive so Wget will keep trying to follow links deeper into your sites until it can find no more!&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-p&lt;/code&gt;, get all page requisites such as images, etc. needed to display HTML page so we can find broken image links too.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;http://www.example.com&lt;/code&gt;, finally the website url to start from.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="reading-the-log"&gt;Reading the log&lt;/h3&gt;
+
+&lt;p&gt;If you take a look inside the log file created by the Wget output you'll wonder how you'd get any useful information out of it. Simple, our old friend &lt;a href="http://en.wikipedia.org/wiki/Grep"&gt;Grep&lt;/a&gt;. Obviously if you changed the location of the log file update the command accordingly.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+grep -B 2 '404' ~/wget.log
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will find all references to the &lt;a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes"&gt;HTTP Code&lt;/a&gt; &lt;code&gt;404&lt;/code&gt; indicating a page not found failure. It will also return the 2 lines above that line so that you can see the url concerned. If you're lucky you will get no output but if you do have some broken links you will get something similar to this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+--2013-09-11 07:12:25--  http://createdbypete.com/something-not-found.html
+Reusing existing connection to createdbypete.com:80.
+HTTP request sent, awaiting response... 404 Not Found
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Unfortunately this doesn't show you where it found the link but it at least tells you the link that is trying to be called so you might be able to start your own investigation. I will update this article if I find a way to get more details about the links location but Wget is not really designed as a website debugging tool.&lt;/p&gt;
+
+&lt;h3 id="try-it-out"&gt;Try it out!&lt;/h3&gt;
+
+&lt;p&gt;Give it a go on your website and see what comes back, you might be suprised even on a small site typos can creep in. You could even search the log for other HTTP response codes.&lt;/p&gt;
+
+&lt;h3 id="more-options"&gt;More options&lt;/h3&gt;
+
+&lt;p&gt;Check out the &lt;a href="http://www.gnu.org/software/wget/manual/wget.html"&gt;manual for wget&lt;/a&gt; as there are many more options available. Or as usual with any command you can use &lt;code&gt;man wget&lt;/code&gt; in your terminal.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>The internet is down! Google downtime caused a 40% drop in global traffic</title>
+    <link rel="alternate" href="http://blog.url.com/articles/the-internet-is-down-google-downtime.html"/>
+    <id>http://blog.url.com/articles/the-internet-is-down-google-downtime.html</id>
+    <published>2013-08-17T00:00:00Z</published>
+    <updated>2013-12-03T09:24:46+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Google.com was down for a few minutes between 23:52 and 23:57 BST on Aug 16, 2013. This result of this downtime was a massive drop in global internet traffic.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.gosquared.com/r/ODU5MTM4"&gt;GoSquared&lt;/a&gt; a service providing real-time analytics for websites reported a &lt;strong&gt;40% drop&lt;/strong&gt; in the number of pageviews. That's a massive drop for only a few seconds downtime and highlights just how much we rely on Google as internet users.&lt;/p&gt;
+
+&lt;div class="img-centered"&gt;&lt;img src="/media/articles/the-internet-is-down-google-downtime/live-free-or-die-hard_s.jpg" alt="John McClane (Bruce Willis) in Die Hard 4.0" /&gt;&lt;/div&gt;
+
+&lt;p&gt;Google has not yet released a statement regarding the outage but I'm sure who ever tripped over the plug socket has gone into hiding and &lt;a href="http://www.imdb.com/title/tt0337978/"&gt;John McClane&lt;/a&gt; can put away his vest… for now.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Make a local website mirror with Wget</title>
+    <link rel="alternate" href="http://blog.url.com/articles/make-a-local-website-mirror-with-wget.html"/>
+    <id>http://blog.url.com/articles/make-a-local-website-mirror-with-wget.html</id>
+    <published>2013-07-15T00:00:00Z</published>
+    <updated>2013-12-03T09:24:46+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;You've probably used the &lt;a href="http://www.gnu.org/software/wget/"&gt;Wget&lt;/a&gt; command-line tool before but you may not be aware of a pretty neat feature it has tucked away.&lt;/p&gt;
+
+&lt;p&gt;You can download the resulting HTML of a website (including any linked assets)to your local machine. Not only that it will update any links to the local file reference. This can be useful for getting hold of a site you want to view offline (perhaps you are travelling).&lt;/p&gt;
+
+&lt;h2 id="lets-get-to-it-mirroring-a-website"&gt;Let's get to it, mirroring a website!&lt;/h2&gt;
+
+&lt;p&gt;If you're on OS X you won't have wget installed by default so once again it's &lt;a href="http://brew.sh/"&gt;Homebrew&lt;/a&gt; to the rescue.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+brew install wget
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;With wget now available let's create a local mirror of a website. In it's simplest form you can use it like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+wget -mk http://www.example.com
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want to be a good citizen and avoid being blocked by any well configured firewalls you might also want to add a delay to the download of each asset. You can do this with the &lt;code&gt;-w&lt;/code&gt; flag, the example below will add a 1 second delay, it will take a bit longer but you can award yourself +1 internet point.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+wget -mk -w 1 http://www.example.com
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id="making-it-more-intelligent"&gt;Making it more intelligent&lt;/h2&gt;
+
+&lt;p&gt;There are a few extra settings you can add to make it more "intelligent" as you probably don't want to try and download the internet (&lt;strong&gt;wget&lt;/strong&gt; will follow all the links in a site so you could end up with a lot of clutter).&lt;/p&gt;
+
+&lt;h3 id="set-the-domain"&gt;Set the domain&lt;/h3&gt;
+
+&lt;p&gt;The example below will not follow any links outside of &lt;code&gt;example.com&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+wget -mk --domains example.com http://www.example.com
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id="more-options"&gt;More options&lt;/h3&gt;
+
+&lt;p&gt;Check out the &lt;a href="http://www.gnu.org/software/wget/manual/wget.html"&gt;manual for wget&lt;/a&gt; as there are many more options available. Or as usual with any command you can use &lt;code&gt;man wget&lt;/code&gt; in your terminal.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Working with nested forms and a many-to-many association in Rails 4</title>
+    <link rel="alternate" href="http://blog.url.com/articles/working-with-nested-forms-and-a-many-to-many-association-in-rails-4.html"/>
+    <id>http://blog.url.com/articles/working-with-nested-forms-and-a-many-to-many-association-in-rails-4.html</id>
+    <published>2013-05-07T00:00:00Z</published>
+    <updated>2013-12-03T09:24:46+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Recently a project I was working on needed a &lt;em&gt;many-to-many&lt;/em&gt; relationship that would also store some extra data in the pivot table. &lt;/p&gt;
+
+&lt;p&gt;Rails provides helpers to make working with this sort of relationship a breeze but when you start to include the nested forms and requirement to add data to that connecting table the solution may not be that obvious.&lt;/p&gt;
+
+&lt;p&gt;I'll be using Rails 4 (rc1), the code will be the same for Rails 3.2 for the most part the major difference is &lt;a href="https://github.com/rails/strong_parameters"&gt;Strong Parameters&lt;/a&gt; is now used in place of &lt;code&gt;attr_accessible&lt;/code&gt;. You can find out &lt;a href="http://createdbypete.com/articles/getting-started-with-rails-4/"&gt;how to install Rails 4 yourself here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="getting-started"&gt;Getting started&lt;/h2&gt;
+
+&lt;p&gt;For this example I'm going to use a Survey application, unfortunately this was a survey done in the street on paper and now the results need to be manually added to the system.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Each Survey will have some Questions, these Questions will be answered by a Participant. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So in this example we need an Answers table to be our many-to-many table that will link our Participant to our Question and keep the Answer the participant provided in an additional column.&lt;/p&gt;
+
+&lt;p&gt;So let's start a new Rails application.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+rails new SurveyApp
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Generate some models and scaffolds to save a little bit of typing later.&lt;/p&gt;
+
+&lt;p&gt;```bash
+rails generate scaffold Participant name
+rails generate scaffold Survey name
+rails generate model Question content:text survey:references
+rails generate model Answer question:references participant:references content:text&lt;/p&gt;
+
+&lt;p&gt;rake db:migrate
+```&lt;/p&gt;
+
+&lt;p&gt;First, we'll sort out the models, the file names are above each class as a comment.&lt;/p&gt;
+
+&lt;p&gt;```ruby
+# app/models/participant.rb
+class Participant &amp;lt; ActiveRecord::Base
+  has_many :answers
+  has_many :questions, through: :answers
+end&lt;/p&gt;
+
+&lt;h1 id="appmodelssurveyrb"&gt;app/models/survey.rb&lt;/h1&gt;
+&lt;p&gt;class Survey &amp;lt; ActiveRecord::Base
+  has_many :questions&lt;/p&gt;
+
+&lt;p&gt;accepts_nested_attributes_for :questions
+end&lt;/p&gt;
+
+&lt;h1 id="appmodelsquestionrb"&gt;app/models/question.rb&lt;/h1&gt;
+&lt;p&gt;class Question &amp;lt; ActiveRecord::Base
+  belongs_to :survey
+  has_many :answers
+  has_many :participants, through: :answers&lt;/p&gt;
+
+&lt;p&gt;accepts_nested_attributes_for :answers
+end&lt;/p&gt;
+
+&lt;p&gt;class Answer &amp;lt; ActiveRecord::Base
+  belongs_to :participant
+  belongs_to :question
+end
+```&lt;/p&gt;
+
+&lt;p&gt;You'll notice I'm not worrying about validation in this guide because it's a simple enough example and this post is concentrating on the nested forms and many-to-many associations.&lt;/p&gt;
+
+&lt;p&gt;You should be familiar with what you see here, I've used &lt;code&gt;through:&lt;/code&gt; as this is recommended in the documentation as we have extra fields we want to access on the pivot table.&lt;/p&gt;
+
+&lt;p&gt;Now let's tackle the controllers, in fact we only need to tackle the Survey controller.&lt;/p&gt;
+
+&lt;p&gt;```ruby
+# app/controllers/surveys_controller.rb
+class SurveysController &amp;lt; ApplicationController
+  before_action :set_survey, only: [:show, :edit, :update, :destroy, :answers]&lt;/p&gt;
+
+&lt;p&gt;# … ignoring content that hasn't changed from scaffold&lt;/p&gt;
+
+&lt;p&gt;def answers
+    @participants = Participant.all
+    @questions = @survey.questions
+  end&lt;/p&gt;
+
+&lt;p&gt;private&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# ... ignoring content that hasn't changed from scaffold
+
+# Never trust parameters from the scary internet, only allow the white list through.
+def survey_params
+  params.require(:survey).permit(:name, 
+    :questions_attributes =&amp;gt; [:id, :content, 
+      :answers_attributes =&amp;gt; [:id, :answer, :participant_id]
+    ])
+end end ```
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because of Strong Parameters replacing &lt;code&gt;attr_accessible&lt;/code&gt; in Rails 4 we tell the application which attributes to allow through to our model to avoid mass-assignment security issues. The way it works is similar but you need to specify &lt;em&gt;everything&lt;/em&gt; this includes the attributes within our nested models. (Don't forget the &lt;code&gt;id&lt;/code&gt; attribute!)&lt;/p&gt;
+
+&lt;p&gt;Next we setup a &lt;a href="http://guides.rubyonrails.org/routing.html#adding-more-restful-actions"&gt;member route&lt;/a&gt; we can use to enter our answers and associate them with a survey.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby
+# config/routes.rb
+SurveyApp::Application.routes.draw do
+  resources :surveys do
+    member do
+      get 'answers'
+    end
+  end
+  resources :participants
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;behind the scenes&lt;/em&gt; work is done so lets sort out our views. Specifically the form so we can add the answers&lt;/p&gt;
+
+&lt;p&gt;```erb
+# app/views/survey/answers.html.erb&lt;/p&gt;
+&lt;h1&gt;&amp;lt;%= @survey.name %&amp;gt; Answers&lt;/h1&gt;
+
+&lt;p&gt;&amp;lt;%= form_for(@survey) do |f| %&amp;gt;
+  &amp;lt;% @participants.each do |participant| %&amp;gt;&lt;/p&gt;
+&lt;h3&gt;&amp;lt;%= participant.name %&amp;gt;&lt;/h3&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Questions&lt;/td&gt;
+        &lt;td&gt;Answer&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &amp;lt;% @questions.each do |question| %&amp;gt;
+      &lt;tr&gt;
+        &lt;td&gt;&amp;lt;%= question.content %&amp;gt;&lt;/td&gt;
+        &lt;td&gt;
+        &amp;lt;%= f.fields_for :questions, question do |q| %&amp;gt;
+          &amp;lt;%= q.fields_for :answers, question.answers.find_or_initialize_by(participant: participant) do |a| %&amp;gt;
+            &amp;lt;%= a.text_area :content %&amp;gt;
+            &amp;lt;%= a.hidden_field :participant_id, participant.id %&amp;gt;
+          &amp;lt;% end %&amp;gt;
+        &amp;lt;% end %&amp;gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &amp;lt;% end %&amp;gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;p&gt;&amp;lt;% end %&amp;gt;
+  &amp;lt;div class="actions"&amp;gt;
+    &amp;lt;%= f.submit %&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;% end %&amp;gt;
+```&lt;/p&gt;
+
+&lt;p&gt;What we have done there is create a table for the Survey model in the usual, then nested within that &lt;code&gt;fields_for&lt;/code&gt; Questions and within that &lt;code&gt;fields_for&lt;/code&gt; Answers. This allows Rails to make use of the &lt;code&gt;accepts_nested_attributes_for&lt;/code&gt; method we used in the models.&lt;/p&gt;
+
+&lt;p&gt;For the Answers &lt;code&gt;fields_for&lt;/code&gt; we are using the &lt;code&gt;find_or_initialize_by&lt;/code&gt; method so that our answer &lt;code&gt;text_area&lt;/code&gt; will populate with data if it's available and if there isn't a record for that Participant and Question combination it initializes a model so the form builder has an object to map on to.&lt;/p&gt;
+
+&lt;p&gt;You'll also notice a &lt;code&gt;hidden_field&lt;/code&gt; where we set the &lt;code&gt;participant_id&lt;/code&gt; for the record to ensure the answer gets associated to a participant (&lt;code&gt;fields_for&lt;/code&gt; will automatically create a &lt;code&gt;hidden_field&lt;/code&gt; for &lt;code&gt;question_id&lt;/code&gt; as we use that model to build the answers object, view source on the page and you will see). &lt;/p&gt;
+
+&lt;p&gt;The way I have chosen to display this is perhaps not the most efficient but it demonstrates how you might tackle this scenario where you need to display all these options and still handle the data submission. If you have another solution to this please let me know on &lt;a href="https://twitter.com/createdbypete"&gt;Twitter @createdbypete&lt;/a&gt; it would be interesting to compare.&lt;/p&gt;
+</content>
+  </entry>
+</feed>

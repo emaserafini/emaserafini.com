@@ -1,0 +1,94 @@
+/* line 6, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_global.scss */
+html, body {
+  font-family: "Open Sans", Helvetica, sans-serif;
+  background-color: white;
+  color: #333333; }
+
+/* line 12, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_global.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Bitter", sans-serif;
+  font-weight: 700; }
+
+/* line 42, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_global.scss */
+pre {
+  background-color: #fef9ec;
+  color: #555555;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  white-space: pre;
+  word-wrap: normal;
+  overflow: scroll;
+  padding: 1em 2em; }
+  /* line 58, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_global.scss */
+  pre code {
+    background-color: transparent; }
+
+/* line 63, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_global.scss */
+a {
+  color: #57ad68;
+  text-decoration: none; }
+
+/* line 69, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_global.scss */
+p code, li code {
+  color: #555555;
+  padding: 0 0.3em;
+  background-color: #fef9ec;
+  border: solid 1px #fdf1d4; }
+/* line 80, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_global.scss */
+p a:hover, li a:hover {
+  background-color: #add7b5; }
+
+/* line 1, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_layout.scss */
+body {
+  padding-top: 60px;
+  margin-left: 20%;
+  margin-right: 10%; }
+  /* line 7, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_layout.scss */
+  body > footer {
+    text-align: center;
+    padding: 2em 0; }
+
+/* line 13, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_layout.scss */
+.article {
+  padding: 1em;
+  border-bottom: solid 1px #eeeeee; }
+  /* line 17, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_layout.scss */
+  .article h1 {
+    font-size: 20px; }
+  /* line 21, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_layout.scss */
+  .article time {
+    color: #999999;
+    font-size: 12px;
+    text-transform: uppercase; }
+  /* line 26, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_layout.scss */
+  .article.latest {
+    padding: 1em; }
+
+/* line 1, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_nav.scss */
+.nav {
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  background-color: #57ad68;
+  width: 120px; }
+  /* line 14, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_nav.scss */
+  .nav .logo {
+    border-right: 0; }
+    /* line 23, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_nav.scss */
+    .nav .logo:hover {
+      background-color: #68b577; }
+  /* line 28, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_nav.scss */
+  .nav ul {
+    float: right; }
+    /* line 32, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_nav.scss */
+    .nav ul li {
+      padding: 0; }
+    /* line 67, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_nav.scss */
+    .nav ul a {
+      float: left;
+      border-left: solid 1px #68b577; }
+    /* line 79, /Users/ema/dev/personal/emaserafini.com/source/stylesheets/_nav.scss */
+    .nav ul [class^="icon-"],
+    .nav ul [class*=" icon-"] {
+      font-size: 1.1em;
+      line-height: inherit; }
